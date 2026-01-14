@@ -339,6 +339,10 @@ private:
 #endif
 };
 
+// TODO implement a way of issuing trades
+//      This should allow the trades to go off the best price on each orderbook
+// TODO test this with real market data
+
 int main() {
     Orderbook orderbook;
 
