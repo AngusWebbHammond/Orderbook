@@ -6,11 +6,14 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 project(Orderbook)
 
-if( MSVC )
-    SET( CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /ENTRY:mainCRTStartup" )
-endif()
+add_executable(main 
+    main.cpp
+    src/HelperFunctions.cpp
+    src/Orderbook.cpp
+    src/OrderbookContainer.cpp
+)
 
-add_executable(main main.cpp)
+target_include_directories(main PRIVATE ${PROJECT_SOURCE_DIR}/src)
 
 if( MSVC )
     if(${CMAKE_VERSION} VERSION_LESS "3.6.0")
