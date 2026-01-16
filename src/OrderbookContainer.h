@@ -40,6 +40,8 @@ namespace Orderbook {
         auto ifContainsRemove(Price price) -> void;
 
     private:
+        auto sort() -> void;
+
         OrderType m_orderbookType;
         std::vector<OrderbookKey> m_orderbook;
     };

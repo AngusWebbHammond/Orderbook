@@ -1,4 +1,7 @@
 #include "OrderbookContainer.h"
+
+#include <algorithm>
+
 namespace Orderbook {
     OrderbookMap::OrderbookMap(OrderType orderType)
         : m_orderbookType{ orderType },
@@ -50,6 +53,7 @@ namespace Orderbook {
         auto* ptr = new OrderbookValue(std::move(obv));
         OrderbookKey item = { .price{tempOrder.getPrice()}, .quantity{tempOrder.getQuantity()}, .orders{ptr} };
         m_orderbook.push_back(item);
+        sort();
     }
 
     auto OrderbookMap::ifContainsRemove(Price price) -> void
@@ -57,6 +61,16 @@ namespace Orderbook {
         if (auto key = ifContainsGet(price); key) {
             key->clear();
             m_orderbook.erase(std::find_if(std::begin(m_orderbook), std::end(m_orderbook), [price](auto item) {return price == item.price;}));
+        }
+    }
+
+    auto OrderbookMap::sort() -> void
+    {
+        if (m_orderbookType == OrderType::BUY) {
+            std::ranges::sort(m_orderbook, [](auto a, auto b) {return a.price < b.price;});
+        }
+        else {
+            std::ranges::sort(m_orderbook, [](auto a, auto b) {return a.price > b.price;});
         }
     }
 
