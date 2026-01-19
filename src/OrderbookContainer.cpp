@@ -159,17 +159,14 @@ namespace Orderbook {
             if (!nextPtr) {
                 delete ptr;
                 ptr = nullptr;
+                orders = nullptr;
+                quantity = 0;
                 return;
-            }
-            else if (nextPtr->nextOrder) {
-                delete ptr;
-                ptr = nextPtr;
             }
             else {
                 delete ptr;
+                ptr = nextPtr;
             }
         }
-        orders = nullptr;
-        quantity = 0;
     }
 }
