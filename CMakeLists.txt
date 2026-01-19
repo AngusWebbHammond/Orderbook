@@ -6,14 +6,28 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 project(Orderbook)
 
+include_directories(${PROJECT_SOURCE_DIR}/assets)
+
 add_executable(main 
     main.cpp
     src/HelperFunctions.cpp
     src/Orderbook.cpp
     src/OrderbookContainer.cpp
+    src/Parser.cpp
 )
 
-target_include_directories(main PRIVATE ${PROJECT_SOURCE_DIR}/src)
+target_include_directories(main PRIVATE ${PROJECT_SOURCE_DIR} )
+
+# 
+add_custom_target(copy_assets
+    COMMAND ${CMAKE_COMMAND} -E copy_directory 
+    ${CMAKE_CURRENT_LIST_DIR}/assets 
+    $<$<CONFIG:Debug>:${CMAKE_BINARY_DIR}/Debug/assets> 
+    $<$<CONFIG:Release>:${CMAKE_BINARY_DIR}/Release/assets>
+    $<$<CONFIG:MinSizeRel>:${CMAKE_BINARY_DIR}/Debug/assets> 
+    $<$<CONFIG:RelWithDebInfo>:${CMAKE_BINARY_DIR}/Release/assets>
+)
+add_dependencies(main copy_assets)
 
 if( MSVC )
     if(${CMAKE_VERSION} VERSION_LESS "3.6.0")
