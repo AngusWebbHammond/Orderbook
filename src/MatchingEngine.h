@@ -1,17 +1,10 @@
 #pragma once
-#include "Order.h"
-#include "OrderbookContainer.h"
-#include "Trade.h"
+#include "Fwd.h"
 
 #include <concepts>
+#include <optional>
 
 namespace Orderbook {
-    template<typename Arg>
-    concept SupportsMatching = requires(Arg arg, OrderbookKey * key1, OrderbookKey * key2) {
-        arg.match(key1, key2);
-        { arg.match(key1, key2) } -> std::same_as<std::optional<Trade>>;
-    };
-
     class FIFO {
     public:
         auto match(OrderbookKey*, OrderbookKey*) -> std::optional<Trade>;

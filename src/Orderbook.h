@@ -1,10 +1,7 @@
 #pragma once
 
-#include "Types.h"
+#include "Fwd.h"
 #include "Order.h"
-#include "OrderbookContainer.h"
-#include "MatchingEngine.h"
-#include "Trade.h"
 
 #include <optional>
 

@@ -1,5 +1,11 @@
 #include "src/Orderbook.h"
 #include "src/Parser.h"
+#include "src/Trade.h"
+#include "src/OrderbookContainer.h"
+#include "src/MatchingEngine.h"
+
+#include <iostream>
+#include <chrono>
 
 // -------------------------------------------------------------------------------
 // Todo list
@@ -11,6 +17,11 @@
 // TODO Add more Trade Types : Pro-Rata, Top, ...
 // TODO Add a way of doing multiple trade types, for example FIFO or Top then Pro-Rata
 // -------------------------------------------------------------------------------
+
+std::ostream& operator<<(std::ostream& os, const Orderbook::Trade& trade) {
+    os << "Sell ID: " << trade.ids.first << ", Buy ID: " << trade.ids.second << ", Price: " << trade.price << ", Quantity: " << trade.quantity;
+    return os;
+}
 
 int main() {
     Orderbook::Orderbook<Orderbook::FIFO> orderbook;
@@ -25,6 +36,8 @@ int main() {
     }
 
     auto trade = orderbook.tryMatch();
+
+    std::cout << trade.value() << std::endl;
 
     return 0;
 }

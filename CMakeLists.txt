@@ -11,7 +11,6 @@ include_directories(${PROJECT_SOURCE_DIR}/assets)
 add_executable(main 
     main.cpp
     src/HelperFunctions.cpp
-    src/Orderbook.cpp
     src/OrderbookContainer.cpp
     src/Parser.cpp
     src/MatchingEngine.cpp
