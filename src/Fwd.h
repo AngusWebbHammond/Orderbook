@@ -13,7 +13,10 @@ namespace Orderbook {
     class FIFO;
     class OrderbookValue;
     class OrderbookKey;
+
+    template<OrderType BookType>
     class OrderbookMap;
+
     class Trade;
     class OrderParser;
 }

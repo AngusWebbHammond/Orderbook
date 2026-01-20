@@ -24,8 +24,8 @@ namespace Orderbook {
         auto tryMatch() -> std::optional<Trade>;
 
     private:
-        OrderbookMap m_buyBook{ OrderType::BUY };
-        OrderbookMap m_sellBook{ OrderType::SELL };
+        OrderbookMap<OrderType::BUY> m_buyBook{};
+        OrderbookMap<OrderType::SELL> m_sellBook{};
 
         MatchingEngine<MatchingType> m_matchingEngine;
     };

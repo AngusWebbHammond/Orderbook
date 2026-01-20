@@ -35,9 +35,16 @@ int main() {
         orderbook.addOrder(order);
     }
 
-    auto trade = orderbook.tryMatch();
 
-    std::cout << trade.value() << std::endl;
+    while (true) {
+        auto trade{ orderbook.tryMatch() };
+        if (trade.has_value()) {
+            std::cout << trade.value() << std::endl;
+        }
+        else {
+            break;
+        }
+    }
 
     return 0;
 }
