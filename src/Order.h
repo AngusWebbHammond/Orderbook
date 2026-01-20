@@ -30,6 +30,8 @@ namespace Orderbook {
         [[nodiscard]] auto getOrderType() -> OrderType { return m_orderType; }
         [[nodiscard]] auto getOrderID() -> OrderID { return m_orderID; }
 
+        auto performTrade(Quantity) -> Quantity;
+
     private:
         OrderID m_orderID{};
         Price m_price{};

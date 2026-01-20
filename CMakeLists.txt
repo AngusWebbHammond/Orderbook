@@ -14,6 +14,8 @@ add_executable(main
     src/Orderbook.cpp
     src/OrderbookContainer.cpp
     src/Parser.cpp
+    src/MatchingEngine.cpp
+    src/Order.cpp
 )
 
 target_include_directories(main PRIVATE ${PROJECT_SOURCE_DIR} )

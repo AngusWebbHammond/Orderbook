@@ -24,5 +24,7 @@ int main() {
         orderbook.addOrder(order);
     }
 
+    auto trade = orderbook.tryMatch();
+
     return 0;
 }

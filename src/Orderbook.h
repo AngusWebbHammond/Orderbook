@@ -3,6 +3,8 @@
 #include "Types.h"
 #include "Order.h"
 #include "OrderbookContainer.h"
+#include "MatchingEngine.h"
+#include "Trade.h"
 
 #include <optional>
 
@@ -20,8 +22,12 @@ namespace Orderbook {
         auto getOrder(OrderID orderID) -> std::optional<std::shared_ptr<Order>>;
         auto cancelOrder(OrderID orderID) -> bool;
 
+        auto tryMatch() -> std::optional<Trade>;
+
     private:
         OrderbookMap m_buyBook{ OrderType::BUY };
         OrderbookMap m_sellBook{ OrderType::SELL };
+
+        MatchingEngine<FIFO> m_matchingEngine;
     };
 }

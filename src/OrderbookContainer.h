@@ -23,6 +23,7 @@ namespace Orderbook {
         auto pushBack(Order tempOrder) -> void;
         auto erase(OrderID id) -> void;
         auto clear() -> void;
+        auto getFront() -> std::shared_ptr<Order>;
     };
 
     class OrderbookMap {
@@ -38,6 +39,7 @@ namespace Orderbook {
         auto ifContainsGet(Price price) -> OrderbookKey*;
         auto insert(Order tempOrder) -> void;
         auto ifContainsRemove(Price price) -> void;
+        auto getFront() -> OrderbookKey*;
 
     private:
         auto sort() -> void;

@@ -64,13 +64,21 @@ namespace Orderbook {
         }
     }
 
+    auto OrderbookMap::getFront() -> OrderbookKey*
+    {
+        if (m_orderbook.size() > 0) {
+            return &m_orderbook.front();
+        }
+        return nullptr;
+    }
+
     auto OrderbookMap::sort() -> void
     {
         if (m_orderbookType == OrderType::BUY) {
-            std::ranges::sort(m_orderbook, [](auto a, auto b) {return a.price < b.price;});
+            std::ranges::sort(m_orderbook, [](auto a, auto b) {return a.price > b.price;});
         }
         else {
-            std::ranges::sort(m_orderbook, [](auto a, auto b) {return a.price > b.price;});
+            std::ranges::sort(m_orderbook, [](auto a, auto b) {return a.price < b.price;});
         }
     }
 
@@ -168,5 +176,10 @@ namespace Orderbook {
                 ptr = nextPtr;
             }
         }
+    }
+
+    auto OrderbookKey::getFront() -> std::shared_ptr<Order>
+    {
+        return orders->order;
     }
 }

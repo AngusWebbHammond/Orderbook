@@ -46,4 +46,21 @@ namespace Orderbook
             return false;
         }
     }
+
+    auto Orderbook::tryMatch() -> std::optional<Trade>
+    {
+        auto buyFront{ m_buyBook.getFront() };
+        auto sellFront{ m_sellBook.getFront() };
+        auto trade{ m_matchingEngine.match(buyFront, sellFront) };
+
+        if (buyFront->quantity == 0) {
+            m_buyBook.ifContainsRemove(buyFront->price);
+        }
+
+        if (sellFront->quantity == 0) {
+            m_sellBook.ifContainsRemove(sellFront->price);
+        }
+
+        return trade;
+    }
 }
