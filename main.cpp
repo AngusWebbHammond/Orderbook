@@ -16,6 +16,8 @@
 // TODO Add robust tests
 // TODO Add more Trade Types : Pro-Rata, Top, ...
 // TODO Add a way of doing multiple trade types, for example FIFO or Top then Pro-Rata
+// TODO Add a GUI/Web-interface to allow adding/removing from the order book in realtime
+// TODO Add Threading support for the matching engine.
 // -------------------------------------------------------------------------------
 
 std::ostream& operator<<(std::ostream& os, const Orderbook::Trade& trade) {
