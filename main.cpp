@@ -13,7 +13,7 @@
 // -------------------------------------------------------------------------------
 
 int main() {
-    Orderbook::Orderbook orderbook;
+    Orderbook::Orderbook<Orderbook::FIFO> orderbook;
     Orderbook::OrderParser parser("assets/Data.txt");
     std::vector<Orderbook::Order> orders;
     while (!parser.isEOF()) {

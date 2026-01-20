@@ -17,16 +17,16 @@ namespace Orderbook {
         auto match(OrderbookKey*, OrderbookKey*) -> std::optional<Trade>;
     };
 
-    template<SupportsMatching Arg>
+    template<SupportsMatching MatchingType>
     class MatchingEngine {
     public:
         auto match(OrderbookKey*, OrderbookKey*) -> std::optional<Trade>;
     private:
-        Arg m_matchingType;
+        MatchingType m_matchingType;
     };
 
-    template<SupportsMatching Arg>
-    inline auto MatchingEngine<Arg>::match(OrderbookKey* key1, OrderbookKey* key2) -> std::optional<Trade>
+    template<SupportsMatching MatchingType>
+    inline auto MatchingEngine<MatchingType>::match(OrderbookKey* key1, OrderbookKey* key2) -> std::optional<Trade>
     {
         return m_matchingType.match(key1, key2);
     }
