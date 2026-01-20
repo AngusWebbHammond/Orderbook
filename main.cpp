@@ -4,12 +4,12 @@
 // -------------------------------------------------------------------------------
 // Todo list
 // -------------------------------------------------------------------------------
-// TODO implement a way of issuing trades 
-//      This should allow the trades to go off the best price on each orderbook
 // TODO test this with real market data
 // TODO Implement a way of switching between FIFO and Pro-Rata trades
 // TODO Add a UserID system, which will tie a user to a trade
 // TODO Add robust tests
+// TODO Add more Trade Types : Pro-Rata, Top, ...
+// TODO Add a way of doing multiple trade types, for example FIFO or Top then Pro-Rata
 // -------------------------------------------------------------------------------
 
 int main() {
