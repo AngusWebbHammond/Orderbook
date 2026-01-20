@@ -15,6 +15,7 @@ add_executable(main
     src/Parser.cpp
     src/MatchingEngine.cpp
     src/Order.cpp
+    src/Trade.cpp
 )
 
 target_include_directories(main PRIVATE ${PROJECT_SOURCE_DIR} )

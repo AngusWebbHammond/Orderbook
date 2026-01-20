@@ -13,3 +13,5 @@ namespace Orderbook {
         Time time;
     };
 }
+
+std::ostream& operator<<(std::ostream& os, const Orderbook::Trade& trade);

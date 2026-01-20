@@ -20,11 +20,6 @@
 // TODO Add Threading support for the matching engine.
 // -------------------------------------------------------------------------------
 
-std::ostream& operator<<(std::ostream& os, const Orderbook::Trade& trade) {
-    os << "Sell ID: " << trade.ids.first << ", Buy ID: " << trade.ids.second << ", Price: " << trade.price << ", Quantity: " << trade.quantity;
-    return os;
-}
-
 int main() {
     Orderbook::Orderbook<Orderbook::FIFO> orderbook;
     Orderbook::OrderParser parser("assets/Data.txt");
