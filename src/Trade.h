@@ -14,4 +14,18 @@ namespace Orderbook {
     };
 }
 
-std::ostream& operator<<(std::ostream& os, const Orderbook::Trade& trade);
+template<>
+struct std::formatter<Orderbook::Trade> {
+    constexpr auto parse(auto& ctx) { return ctx.begin(); }
+
+    auto format(const Orderbook::Trade& trade, auto& ctx) const {
+        return std::format_to(
+            ctx.out(),
+            "Sell ID: {}, Buy ID: {}, Price: {}, Quantity: {}",
+            trade.ids.first,
+            trade.ids.second,
+            trade.price,
+            trade.quantity
+        );
+    }
+};

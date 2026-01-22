@@ -4,8 +4,8 @@
 #include "src/OrderbookContainer.h"
 #include "src/MatchingEngine.h"
 
-#include <iostream>
 #include <chrono>
+#include <print>
 
 // -------------------------------------------------------------------------------
 // Todo list
@@ -32,11 +32,10 @@ int main() {
         orderbook.addOrder(order);
     }
 
-
     while (true) {
         auto trade{ orderbook.tryMatch() };
         if (trade.has_value()) {
-            std::cout << trade.value() << std::endl;
+            std::println("{}", trade.value());
         }
         else {
             break;
